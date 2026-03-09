@@ -1,18 +1,26 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include "LGFX_Config.hpp"
+
+namespace {
+constexpr int PIN_LCD_EN = 42;
+LGFX lcd;
+}  // namespace
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  pinMode(PIN_LCD_EN, OUTPUT);
+  digitalWrite(PIN_LCD_EN, HIGH);
+  delay(20);
+
+  lcd.init();
+  lcd.setRotation(0);
+  lcd.fillScreen(TFT_BLACK);
+  lcd.setTextColor(TFT_WHITE, TFT_BLACK);
+  lcd.setTextDatum(middle_center);
+  lcd.setTextSize(2);
+  lcd.drawString("Hello AMOLED", lcd.width() / 2, lcd.height() / 2);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  delay(1000);
 }
