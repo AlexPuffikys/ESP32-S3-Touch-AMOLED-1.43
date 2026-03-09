@@ -43,15 +43,41 @@ IMU:
 connected via I2C
 INT GPIO8
 
+
+
+This repository is an embedded firmware project.
+
+Target hardware:
+ESP32-S3 Touch AMOLED 1.43 (Waveshare)
+
+Environment:
+PlatformIO
+Arduino framework
+
+Memory:
+Flash 16MB
+PSRAM 8MB
+
+Display:
+AMOLED 466x466
+QSPI interface
+Use LovyanGFX
+
+Touch:
+FT3168 (I2C)
+
+IMU:
+I2C sensor with interrupt on GPIO8
+
 Coding rules:
 
 - Always generate PlatformIO compatible code
-- Do NOT generate Arduino IDE sketches
-- Use LovyanGFX for display driver
-- Use separate configuration class for display
-- Prefer modular architecture
+- Never generate Arduino IDE sketches
+- Prefer modular code structure
+- Avoid large monolithic files
+- Ensure code compiles with `pio run`
 
-Expected structure:
+Project structure:
 
 src/
 main.cpp
@@ -63,3 +89,8 @@ imu/
 
 include/
 board_config.h
+
+Pull request rules:
+
+- Code must compile successfully in GitHub Actions
+- Fix compile errors before completing the task
