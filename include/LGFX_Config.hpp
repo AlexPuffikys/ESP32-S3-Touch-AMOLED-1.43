@@ -27,6 +27,8 @@ class LGFX : public lgfx::LGFX_Device {
 
       cfg.pin_sclk = 10;
       cfg.pin_mosi = 11;  // D0
+      // NOTE: D1/D2/D3 (12/13/14) are board QSPI data pins, but
+      // Bus_SPI API in current LovyanGFX exposes only single MOSI here.
       cfg.pin_miso = -1;
       cfg.pin_dc = -1;
 
